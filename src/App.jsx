@@ -21,11 +21,17 @@ function App() {
   return (
     <div>
       <Greeting username="Bob"/>
+      <hr />
       <Greeting username="Alice" />
+      <hr />
       <UserInfo handleClick={handleAlert}/>
+      <hr />
       <TaskComponent />
+      <hr />
       <Counter />
+      <hr />
       <TaskForm />
+      <hr />
       <br />
       <ul>
         {tasksWithId.map(task => (
