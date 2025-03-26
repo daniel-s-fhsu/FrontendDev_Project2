@@ -11,12 +11,22 @@ import TaskForm from './TaskForm'
 function App() {
   const [count, setCount] = useState(0)
 
-  const taskArray = ['Feed dogs', 'Feed cats', 'Do homework', 'Do work', 'Clean house'];
-  const tasksWithId = taskArray.map((task, index) => ({task: task, id: index})); 
+  const taskArray = [{name: 'Feed dogs', description: 'Get the dogs some food'},
+                    {name: 'Feed cats', description: 'Get the cats some food'},
+                    {name:'Do homework', description: 'Spend some time getting schoolwork done'},
+                    {name: 'Do work', description: 'Get work done for work'},
+                    {name: 'Clean house', description: 'Do chores around the house'}];
+  const [tasksWithId, setTasksWithId] = useState(taskArray.map((task, index) => ({name: task.name, description: task.description, id: crypto.randomUUID()}))); 
+
 
   const handleAlert = () => {
     alert("Showing an alert");
   };
+
+  const handleSubmit = (name, description) => {
+    const newTasksWithId = [...tasksWithId, {name, description, id: crypto.randomUUID()}];
+    setTasksWithId(newTasksWithId);
+  }
 
   return (
     <div>
@@ -30,13 +40,12 @@ function App() {
       <hr />
       <Counter />
       <hr />
-      <TaskForm />
-      <hr />
+      <TaskForm handleSubmit={handleSubmit} />
       <br />
       <ul>
         {tasksWithId.map(task => (
           <li key={task.id}>
-            {task.task}
+            {task.name} :: {task.description}
           </li>
         ))}
       </ul>

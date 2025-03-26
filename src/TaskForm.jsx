@@ -1,23 +1,51 @@
 import { useState } from "react";
+import * as yup from "yup";
 
-function TaskForm() {
-    const [userInput, setUserInput] = useState('');
+function TaskForm({ handleSubmit }) {
+    const [taskName, setTaskName] = useState('');
     const [description, setDescription] = useState('');
 
-    const handleChange = (event) => {
-        setUserInput(event.target.value);
+    const handleNameChange = (event) => {
+        setTaskName(event.target.value);
     };
 
-    const handleSubmit = (event) => {
+    const handleDescriptionChange = (event) => {
+        setDescription(event.target.value);
+    };
+
+    const schema = yup.object().shape({
+        taskName: yup.string().required(),
+        description: yup.string().required()
+    });
+
+    const handleSubmissionEvent = (event) => {
         event.preventDefault();
-        console.log(userInput);
-        setUserInput('');
+        //console.log(`${taskName} : ${description}`);
+
+        // Validation
+        schema.isValid({ taskName, description})
+            .then((valid) => {
+                if (valid) {
+                    handleSubmit(taskName, description);
+                    setTaskName('');
+                    setDescription('');
+                } else {
+                    alert("You must fill out both name and description!");
+                }
+            })
+
+        
     }
 
     return(
     <form>
-        <input value={userInput} onChange={handleChange}/>
-        <button onClick={handleSubmit}>Submit</button>
+        <label>Task Name: </label>
+        <input value={taskName} onChange={handleNameChange}/>
+        <br />
+        <label>Description: </label>
+        <input value={description} onChange={handleDescriptionChange}/>
+        <br />
+        <button onClick={handleSubmissionEvent}>Submit</button>
     </form>
     );
 }
