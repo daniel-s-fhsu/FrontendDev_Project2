@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function TaskForm() {
     const [userInput, setUserInput] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleChange = (event) => {
         setUserInput(event.target.value);
