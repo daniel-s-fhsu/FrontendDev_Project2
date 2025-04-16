@@ -1,13 +1,8 @@
-import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
-import UserInfo from './UserInfo'
-import Greeting from './Greeting'
-import TaskComponent from './TaskComponent'
-import Counter from './Counter'
-import TaskForm from './TaskForm'
-import TaskEntryDisplay from './TaskEntryDisplay'
 import BasicComponents from './BasicComponents'
+import PageNotFound from './PageNotFound'
+import Tasks from './Tasks'
 
 
 
@@ -19,6 +14,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<BasicComponents />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   )
