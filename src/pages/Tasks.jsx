@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TaskEntryDisplay from "./TaskEntryDisplay";
-import TaskForm from "./TaskForm";
+import TaskEntryDisplay from "../components/task/TaskEntryDisplay";
+import TaskForm from "../components/task/TaskForm";
 
 
 function Tasks() {

@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import BasicComponents from './BasicComponents'
-import PageNotFound from './PageNotFound'
-import Tasks from './Tasks'
+import BasicComponents from './pages/BasicComponents'
+import PageNotFound from './pages/PageNotFound'
+import Tasks from './pages/Tasks'
+import Header from './pages/Header';
 
 
 
@@ -11,13 +11,18 @@ function App() {
   
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<BasicComponents />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+   <BrowserRouter>
+  <Header />
+  <main className="content">
+    <Routes>
+      <Route path="/" element={<BasicComponents />} />
+      <Route path="/tasks" element={<Tasks />} />
+      <Route path="*" element={<PageNotFound />} />
+    </Routes>
+  </main>
+</BrowserRouter>
+    </>
   )
 }
 

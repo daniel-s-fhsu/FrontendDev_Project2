@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Greeting from "./Greeting";
-import UserInfo from "./UserInfo";
-import TaskComponent from "./TaskComponent";
-import Counter from "./Counter";
+import Greeting from "../components/basicComponents/Greeting";
+import UserInfo from "../components/basicComponents/UserInfo";
+import TaskComponent from "../components/task/TaskComponent";
+import Counter from "../components/basicComponents/Counter";
 
 
 
