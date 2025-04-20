@@ -12,7 +12,7 @@ function Tasks() {
     
 
     useEffect(() => {
-        if (!user?.email) return; // Wait until user is available
+        if (!user?.email) return; 
     
         const fetchTask = async () => {
             try {
