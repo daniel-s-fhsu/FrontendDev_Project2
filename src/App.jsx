@@ -3,7 +3,9 @@ import BasicComponents from './pages/BasicComponents'
 import PageNotFound from './pages/PageNotFound'
 import Tasks from './pages/Tasks'
 import Header from './pages/Header';
-
+import SignInForm from './pages/SignIn';
+import { AuthProvider } from './UserContext';
+import ProtectedRoute from './routes/ProtectedRoute';
 
 
 function App() {
@@ -12,16 +14,19 @@ function App() {
 
   return (
     <>
+    <AuthProvider>
    <BrowserRouter>
   <Header />
   <main className="content">
     <Routes>
       <Route path="/" element={<BasicComponents />} />
-      <Route path="/tasks" element={<Tasks />} />
+      <Route path="/signIn" element={<SignInForm />} />
+      <Route path="/tasks" element={<ProtectedRoute><Tasks /></ProtectedRoute>} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   </main>
 </BrowserRouter>
+</AuthProvider>
     </>
   )
 }

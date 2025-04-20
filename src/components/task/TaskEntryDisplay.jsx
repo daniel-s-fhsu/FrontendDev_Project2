@@ -5,7 +5,7 @@ function TaskEntryDisplay({ id, taskName, description, handleDelete }) {
   
     return (
       <li>
-        {taskName} :: {description} <button onClick={handleClick}>Delete!</button>
+        {taskName} :: {description} <button onClick={handleClick}>Delete</button>
       </li>
     );
   }
