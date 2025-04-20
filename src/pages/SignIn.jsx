@@ -28,7 +28,7 @@ export default function SignInForm() {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        //const data = {name, email, password, confirmPassword };
+        const data = {name, email, password, confirmPassword };
 
         try {
             await createUser(email, password).then((userCredential) => {
